@@ -1,0 +1,5 @@
+openai
+PyGithub
+GitPython
+exa-py
+python-dotenv

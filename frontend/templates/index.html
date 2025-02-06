@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Developer Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div id="form" class="form {% if request.form.user_input or response %}open{% endif %}">
+        <div id="heading" class="glass glass--gradient glass--heading">
+            <span class="form-header">
+                <span class="form-icon"></span>
+                <span class="form-title">What would you like to build today?</span>
+            </span>
+            <button class="form-close-button" onclick="closeForm()">✕</button>
+        </div>
+        <div id="input" class="glass">
+            <form method="post">
+                <textarea name="user_input" placeholder="Type your request here" required>{{ request.form.user_input }}</textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        {% if response %}
+        <div class="glass response">
+            <h2>Response:</h2>
+            <p>{{ response|safe }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Include your JavaScript file -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
